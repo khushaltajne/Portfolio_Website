@@ -36,6 +36,7 @@ import sun_icon from './sun_icon.png';
 import ui_icon from './ui-icon.png';
 import ui_ux from './ui-ux.png';
 import user_profile from './user-profile.png';
+import vscode from './vscode.png';
 import web_icon from './web-icon.png';
 
 export const assets = {
@@ -77,7 +78,8 @@ export const assets = {
     oracle,
     eclipse_icon,
     github_icon,
-    user_profile
+    user_profile,
+    vscode
 };
 
 export const projectsData = [
@@ -89,8 +91,8 @@ export const projectsData = [
       "Dark/Light mode",
       "Deployed on Vercel",
     ],
-    repo: "https://github.com/yourusername/portfolio",
-    live: "https://yourportfolio.vercel.app",
+    repo: "https://github.com/khushaltajne/Portfolio_Website",
+    live: "https://portfoliokhushal21.netlify.app",
   },
   {
     name: "Shopping Mall ( JavaScript API Project )",
@@ -156,9 +158,25 @@ export const infoList = [
   { 
     icon: assets.edu_icon, 
     iconDark: assets.edu_icon_dark, 
-    title: 'Education', 
-    description: 'B.Tech in Information Technology', 
-    details: 'Graduated with a Bachelor of Technology in Information Technology, where I gained strong foundations in programming, data structures, algorithms, and database management. Completed academic projects involving full-stack development, REST API design, and software engineering practices.' 
+    title: 'B.Tech in Information Technology', 
+    description: 'Bachelor of Technology (2021 - 2025)', 
+    details: ['🎓 Completed graduation from Kavikulguru Institute of Technology and Science, Ramtek, Nagpur,  with a strong foundation in programming, data structures, algorithms, and database management.',
+               '💻 Gained practical experience through projects in full-stack web development, REST API design, and IoT-based systems.',
+               '🚀 Completed internships where I worked on HTML, CSS, and JavaScript, enhancing my development skills.']
+  },
+  { 
+    icon: assets.edu_icon, 
+    iconDark: assets.edu_icon_dark, 
+    title: 'Higher Secondary Education (Class 12th)', 
+    description: 'Science Stream (2019 - 2021)', 
+    details: 'Completed Higher Secondary Education from G.B.M.M. Junior College, Hinganghat, Wardha, Maharashtra with a specialization in Physics, Chemistry, Biology, and Mathematics.'
+  },
+  { 
+    icon: assets.edu_icon, 
+    iconDark: assets.edu_icon_dark, 
+    title: 'Secondary Education (Class 10th)', 
+    description: 'General Studies (2018 - 2019)', 
+    details: 'Completed Secondary School from Dnyandeep Vidya Niketan, Hinganghat, Wardha, Maharashtra with distinction. Gained interest in computer science and technology, leading to a career path in software development.'
   }
 ];
 
