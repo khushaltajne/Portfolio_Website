@@ -88,8 +88,7 @@ export const projectsData = [
     description: "A personal portfolio built with Next.js and Tailwind CSS.",
     features: [
       "Responsive design",
-      "Dark/Light mode",
-      "Deployed on Vercel",
+      "Deployed on Netlify",
     ],
     repo: "https://github.com/khushaltajne/Portfolio_Website",
     live: "https://portfoliokhushal21.netlify.app",
