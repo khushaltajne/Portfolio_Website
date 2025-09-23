@@ -20,7 +20,7 @@ function Footer() {
                     <a target="_blank" href="https://github.com/khushaltajne">GitHub</a>
                 </li>
                  <li>
-                    <a target="_blank" href="www.linkedin.com/in/khushal-tajne">LinkedIn</a>
+                    <a target="_blank" href="https://www.linkedin.com/in/khushal-tajne">LinkedIn</a>
                 </li>
             </ul>
         </div>
