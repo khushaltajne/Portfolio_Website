@@ -1,4 +1,6 @@
 'use client'
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
@@ -10,41 +12,51 @@ import ProfileSummary from "./components/ProfileSummary";
 import Projects from "./components/Projects";
 import ThreeDBackground from "./components/ThreeDBackground";
 import ThreeDScrollSection from "./components/ThreeDScrollSection";
+import LoadingScreen from "./components/LoadingScreen";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
-    <ThreeDBackground />
-    <Navbar/>
-    
-    <Header/>
-    
-    <ThreeDScrollSection>
-      <ProfileSummary/>
-    </ThreeDScrollSection>
-    
-    <ThreeDScrollSection>
-      <About/>
-    </ThreeDScrollSection>
-    
-    <ThreeDScrollSection>
-      <Education/>
-    </ThreeDScrollSection>
-    
-    <ThreeDScrollSection>
-      <Experience/>
-    </ThreeDScrollSection>
-    
-    <ThreeDScrollSection>
-      <Projects />
-    </ThreeDScrollSection>
-    
-    <ThreeDScrollSection>
-      <Contact/>
-    </ThreeDScrollSection>
-    
-    <Footer/>
+      <AnimatePresence mode="wait">
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      {!loading && (
+        <>
+          <ThreeDBackground />
+          <Navbar/>
+          
+          <Header/>
+          
+          <ThreeDScrollSection>
+            <ProfileSummary/>
+          </ThreeDScrollSection>
+          
+          <ThreeDScrollSection>
+            <About/>
+          </ThreeDScrollSection>
+          
+          <ThreeDScrollSection>
+            <Education/>
+          </ThreeDScrollSection>
+          
+          <ThreeDScrollSection>
+            <Experience/>
+          </ThreeDScrollSection>
+          
+          <ThreeDScrollSection>
+            <Projects />
+          </ThreeDScrollSection>
+          
+          <ThreeDScrollSection>
+            <Contact/>
+          </ThreeDScrollSection>
+          
+          <Footer/>
+        </>
+      )}
     </>
   );
 }
