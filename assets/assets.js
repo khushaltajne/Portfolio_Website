@@ -1,5 +1,6 @@
 import arrow_icon_dark from './arrow-icon-dark.png';
 import arrow_icon from './arrow-icon.png';
+import database_icon from './database-icon.png'
 import backend_icon from './backend-icon.png';
 import close_black from './close-black.png';
 import close_white from './close-white.png';
@@ -38,6 +39,13 @@ import ui_ux from './ui-ux.png';
 import user_profile from './user-profile.png';
 import vscode from './vscode.png';
 import web_icon from './web-icon.png';
+import java_icon from './java-icon.png';
+import tools_icon from './tools-icon.png';
+import concepts_icon from './concept-icon.png';
+import postman_icon from './postman-icon.png';
+import docker_icon from './docker-icon.png';
+import insomnia_icon from './Insomnia-icon.png';
+
 
 export const assets = {
     code_icon,
@@ -75,14 +83,87 @@ export const assets = {
     right_arrow_bold_dark,
     ui_ux,
     backend_icon,
+    database_icon,
     oracle,
     eclipse_icon,
     github_icon,
     user_profile,
-    vscode
+    vscode,
+    java_icon,
+    tools_icon,
+    concepts_icon,
+    postman_icon,
+    docker_icon,
+    insomnia_icon,
 };
 
+export const profileSummary = {
+  summary: "I’m <strong>Khushal V. Tajne</strong>, a B.Tech graduate in Information Technology specializing in <strong>Java Full Stack development</strong>. I have hands-on experience designing secure, scalable backend architectures using <strong>Spring Boot, Spring Security, JWT, and relational/NoSQL databases</strong>, alongside interactive frontend panels with <strong>React.js</strong>.",
+  role: [
+    "Java Full Stack Developer",
+    "Java Backend Developer",
+    "Software Engineer",
+    "Spring Boot Developer",
+    "Associate Software Engineer"
+  ]
+};
+
+
 export const projectsData = [
+  {
+    name: "Personal Goal & Task Monitoring System",
+    description: "Developed a full-stack goal tracking application using React, Spring Boot, JWT, and PostgreSQL for scheduling and monitoring yearly, monthly, and daily targets.",
+    features: [
+      "Designed and Developed 20+ REST APIs using Spring Boot, improving backend performance by 30%",
+      "Implemented JWT-based authentication and authorization using Spring Security",
+      "Built role-based access control ensuring user-specific data isolation",
+      "Developed frontend using React.js with protected routes and API integration using Axios",
+      "Created goal scheduling system (Yearly, Monthly, Daily targets)",
+      "Implemented CRUD operations for goals, sub-goals, and notes",
+      "Designed normalized PostgreSQL database schema for Users, Goals, Targets, and Notes",
+      "Used Spring Data JPA for database interaction and transaction management",
+      "Implemented global exception handling using @ControllerAdvice",
+      "Tested APIs using Postman and ensured proper validation"
+    ],
+    repo: "https://github.com/khushaltajne/Personal-Goal-And-Task-Tracker",
+    live: "",
+  },
+  {
+    name: "Bank Management System (Enterprise Level)",
+    description: "Built a secure banking application using Spring Boot and MySQL implementing deposit, withdrawal, and fund transfer with role-based authentication and transactional management.",
+    features: [
+      "Designed and developed RESTful banking APIs using Spring Boot",
+      "Implemented secure authentication and authorization using Spring Security",
+      "Developed core banking features including deposit, withdrawal, and secure fund transfer operations",
+      "Applied Spring Data JPA (Hibernate) for database interaction and ORM mapping",
+      "Designed normalized MySQL database schema for Users, Accounts, and Transactions",
+      "Implemented DTO pattern for secure data transfer between layers",
+      "Applied Hibernate Validator for input validation and data integrity",
+      "Implemented global exception handling using @ControllerAdvice",
+      "Ensured data consistency and atomicity using @Transactional",
+      "Followed layered architecture (Controller → Service → Repository) for maintainability and scalability",
+      "Tested and validated APIs using Postman"
+    ],
+    repo: "https://github.com/khushaltajne/Bank-Management-System",
+    live: "",
+  },
+  {
+    name: "E-Commerce Web Application",
+    description: "Designed and developed a scalable full-stack e-commerce platform with separate Admin and Customer modules, focusing on performance optimization and clean architecture.",
+    features: [
+      "Designed and developed the complete e-commerce system using Java, JSP, Servlets, and MySQL",
+      "Implemented secure user authentication with session management for Admin and Customer roles",
+      "Developed product management module including product listing, add/update/delete operations",
+      "Built inventory tracking system to manage stock availability in real-time",
+      "Created responsive user interfaces using HTML, CSS with dynamic product cards and search filters",
+      "Implemented shopping workflow including product browsing and structured navigation",
+      "Optimized SQL queries and backend request handling to reduce page load time by 50%",
+      "Improved overall user engagement by 30% through UI enhancements and workflow optimization",
+      "Applied MVC architecture for clean separation of business logic, presentation layer, and database operations"
+    ],
+    repo: "https://github.com/khushaltajne/E-Commerce-Web-Application",
+    live: "",
+  },
   {
     name: "Portfolio Website",
     description: "A personal portfolio built with Next.js and Tailwind CSS.",
@@ -99,7 +180,7 @@ export const projectsData = [
   },
   {
     name: "Shopping Mall ( JavaScript API Project )",
-    description: "Developed a dynamic web application that fetches data from a public API and displays it in a clean, responsive layout.Styled the interface and implemented interactive features entirely using JavaScript without relying on external frameworks.",
+    description: "Developed a dynamic web application that fetches data from a public API and displays it in a clean, responsive layout. Styled the interface and implemented interactive features entirely using JavaScript without relying on external frameworks.",
     features: [
       "Fetches data from a public API",
       "Dynamic background",
@@ -107,7 +188,7 @@ export const projectsData = [
     repo: "https://github.com/khushaltajne/JavaScript-API-Project--Personal-Project-",
     live: "https://shoppingmalljs.netlify.app",
   },
-   {
+  {
     name: "Co-Po Mapping",
     description: "The CO–PO Mapping System automates mapping between Course Outcomes (COs) and Program Outcomes (POs), calculates attainment levels from student performance, and generates reports to support accreditation (NBA/NAAC).",
     features: [
@@ -137,27 +218,106 @@ export const experienceData = [
 
 
 export const infoList = [
-   { 
-    icon: assets.code_icon, 
-    iconDark: assets.code_icon_dark, 
-    title: 'Programming Languages', 
-    description: 'Java, C , JavaScript', 
-    details: 'Strong understanding of core programming concepts and OOP principles. Skilled in Java for backend development, with problem-solving skills honed through C, and proficient in JavaScript for creating interactive web functionalities.'
+  {
+    icon: assets.code_icon,
+    iconDark: assets.code_icon_dark,
+    title: "Languages",
+    description: "Java 8+, JavaScript, C, HTML, CSS",
+    details: [
+      "Java 8+ features: Lambdas, Streams, Functional Interfaces, and Optional",
+      "JavaScript for dynamic and interactive user interface flows",
+      "C programming for algorithms and core logic problem-solving",
+      "HTML & CSS for responsive and modern web design structures"
+    ]
   },
-  { 
-    icon: assets.ui_ux, // Replace with an actual icon asset
-    iconDark: assets.frontend_icon_dark, // Replace with actual dark mode icon
-    title: 'Frontend Development', 
-    description: 'HTML, CSS, React.js', 
-    details: 'Experienced in creating responsive, dynamic, and user-friendly interfaces using HTML and CSS. Skilled in building modern single-page applications with React.js, applying best practices in UI/UX design and performance optimization.'
+  {
+    icon: assets.backend_icon,
+    iconDark: assets.backend_icon_dark,
+    title: "Frameworks & Backend Technologies",
+    description: "React, Spring Boot, Spring, Hibernate, JDBC",
+    details: [
+      "React.js for modular component-based user interfaces",
+      "Spring Boot & Spring Framework (Core, MVC, DI, AOP) for microservices",
+      "Hibernate ORM & Spring Data JPA for persistent data mapping",
+      "Servlets, JSP, and JDBC for classic enterprise Java architectures",
+      "RESTful Web Services for designing robust integration APIs",
+    //  "JUnit for test-driven development and unit testing"
+    ]
   },
-  { 
-    icon: assets.backend_icon, // Replace with an actual icon asset
-    iconDark: assets.database_icon_dark, // Replace with actual dark mode icon
-    title: 'Database Technologies', 
-    description: 'SQL, Oracle', 
-    details: 'Proficient in designing, querying, and managing relational databases. Experienced with SQL for web applications and Oracle for enterprise-grade database solutions, including schema design and optimization.'
+  {
+    icon: assets.concepts_icon,
+    iconDark: assets.concepts_icon_dark,
+    title: "Security",
+    description: "Spring Security, JWT, Role-Based Access Control (RBAC)",
+    details: [
+      "Spring Security integrations to protect REST endpoints",
+      "JWT (JSON Web Tokens) Authentication and secure token management",
+      "Role-Based Access Control (RBAC) ensuring strict data isolation"
+    ]
   },
+  {
+    icon: assets.database_icon,
+    iconDark: assets.database_icon_dark,
+    title: "Databases",
+    description: "MySQL, PostgreSQL, Oracle, MongoDB, SQL",
+    details: [
+      "Relational databases: MySQL, PostgreSQL, and Oracle Database",
+      "NoSQL database: MongoDB for document-oriented storage",
+      "SQL optimization: Joins, Subqueries, Aggregations, and normalization"
+    ]
+  },
+  {
+    icon: assets.java_icon,
+    iconDark: assets.java_icon_dark,
+    title: "Java Core",
+    description: "OOPs, Collections, Multithreading, Generics",
+    details: [
+      "Object-Oriented Programming (OOPs) design and patterns",
+      "Java Collections Framework (List, Set, Map, Stream API)",
+      "Multithreading, exception handling, custom generics, and file I/O"
+    ]
+  },
+  {
+    icon: assets.web_icon,
+    iconDark: assets.web_icon,
+    title: "Cloud",
+    description: "AWS (EC2, S3, RDS)",
+    details: [
+      "Amazon Web Services (AWS) deployment experience",
+      "AWS EC2 for virtual server instances hosting backends",
+      "AWS S3 for secure, scalable object storage buckets",
+      "AWS RDS for cloud relational database configurations"
+    ]
+  },
+  {
+    icon: assets.tools_icon,
+    iconDark: assets.tools_icon_dark,
+    title: "Tools & Platforms",
+    description: "Git, Maven, Tomcat, Postman, Docker , VS Code, Eclipse ,SQL Plus, Swagger, Insomnia",
+    details: [
+      "Git and GitHub for code version control and team reviews",
+      "Maven for project build management and dependency resolution",
+      "Apache Tomcat server deployment and local server setups",
+      "Testing utilities: Postman, Swagger, Insomnia",
+      "Docker for containerized environment testing",
+      "IDE environments: VS Code, Eclipse, SQL Plus"
+    ]
+  },
+  {
+    icon: assets.concepts_icon,
+    iconDark: assets.concepts_icon_dark,
+    title: "Concepts",
+    description: "MVC, Microservices, SDLC, Debugging",
+    details: [
+      "MVC Architecture for clean backend-to-frontend separation",
+      "Microservices architecture principles and design",
+      "Software Development Life Cycle (SDLC) methodologies",
+      "Strong debugging, problem-solving, and API integration practices"
+    ]
+  }
+];
+
+export const educationData = [
   { 
     icon: assets.edu_icon, 
     iconDark: assets.edu_icon_dark, 
@@ -200,5 +360,52 @@ export const toolsData = [
    {
     icon: assets.github_icon,
     name:'GitHub'
+   },
+   {
+    icon: assets.git,
+    name:'Git'
+   },
+   {
+    icon: assets.mongodb,
+    name:'MongoDB'
+   },
+   {
+    icon: assets.postman_icon,
+    name:'Postman'
+   },
+   {
+    icon: assets.docker_icon,
+    name:'Docker'
+   },
+   {
+    icon: assets.insomnia_icon,
+    name:'Insomnia'
    }
 ];
+
+
+export const certificationsData = [
+  // {
+  //   title: "Java Programming Certification",
+  //   org: "Online Learning Platform",
+  //   year: 2023,
+  //   icon: assets.java_icon,          // badge icon
+  //   type: "Professional",
+  // },
+  // {
+  //   title: "Spring Boot & REST API Development",
+  //   org: "Online Training Program",
+  //   year: 2024,
+  //   icon: assets.backend_icon,
+  //   type: "Professional",
+  // },
+  // {
+  //   title: "Full Stack Web Development",
+  //   org: "Internship / Hands-on Training",
+  //   year: 2024,
+  //   icon: assets.fullstack_icon,
+  //   type: "Internship",
+  // },
+  
+];
+

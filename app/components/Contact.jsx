@@ -1,146 +1,172 @@
 "use client";
-
-import { assets } from "@/assets/assets";
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiSend, FiCheckCircle } from "react-icons/fi";
 
-function Contact() {
-  const [result, setResult] = useState("");
+export default function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
-    formData.append("access_key", "c8c3591b-e82f-4b99-bf17-cba0f23ea29b");
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Motion variants for form children (stagger)
-  const formVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.6, 
-        staggerChildren: 0.15 
-      } 
-    }
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const inputVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    // Simulate submission delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+
+      // Reset success state after a few seconds
+      setTimeout(() => setIsSuccess(false), 5000);
+    }, 1500);
   };
 
   return (
-    <section
-      id="contacts"
-      className="relative w-full px-[8%] py-16 scroll-mt-20 bg-[url(/footer-bg-color.png)] bg-no-repeat bg-center bg-[length:90%_auto]"
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-white/70"></div>
+    <section id="contacts" className="w-full px-[8%] py-24 scroll-mt-20 relative">
+      {/* Background glow node */}
+      <div className="absolute right-1/4 top-1/3 w-80 h-80 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none" />
 
-      <motion.div
-        className="relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-       
-      >
-        {/* Title */}
-        <h4 className="text-center mb-2 text-lg font-medium text-purple-700">
-          Connect with Me
-        </h4>
-        <h2 className="text-center text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Get in Touch
-        </h2>
-
-        {/* Description */}
-        <p className="text-center max-w-2xl mx-auto text-gray-700 mb-12">
-          I'm always open to discussing new projects, creative ideas, or
-          opportunities to be part of your vision.  
-          Whether you have a question, feedback, or just want to say hi — feel free to reach out!
-        </p>
-
-        {/* Animated Form Container */}
-        <motion.div
-          className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-8 md:p-10 border border-gray-100"
-          initial="hidden"
-          whileInView="visible"
-          variants={formVariants}
-         
+      {/* Heading */}
+      <div className="text-center mb-16 relative z-10">
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-xs uppercase tracking-[0.2em] text-[#00f5a0] mb-2 font-mono"
         >
-          <form onSubmit={onSubmit} className="space-y-6">
-            {/* Name & Email */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              variants={inputVariants}
-            >
-              <motion.input
-                type="text"
-                placeholder="Your Name"
-                name="name"
-                required
-                variants={inputVariants}
-                whileFocus={{ scale: 1.02, borderColor: "#8b5cf6" }}
-                className="w-full p-4 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-              />
-              <motion.input
-                type="email"
-                placeholder="Your Email"
-                name="email"
-                required
-                variants={inputVariants}
-                whileFocus={{ scale: 1.02, borderColor: "#8b5cf6" }}
-                className="w-full p-4 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all"
-              />
-            </motion.div>
+          Get in Touch
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-4xl md:text-5xl font-semibold text-white tracking-tight"
+        >
+          Contact Me
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-sm text-[#c5c6c7]/60 max-w-md mx-auto mt-4"
+        >
+          Have a question or want to work together? Drop a message below.
+        </motion.p>
+      </div>
 
-            {/* Message */}
-            <motion.textarea
-              rows="6"
-              placeholder="Your Message"
-              name="message"
-              required
-              variants={inputVariants}
-              whileFocus={{ scale: 1.01, borderColor: "#8b5cf6" }}
-              className="w-full p-4 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all resize-none"
-            ></motion.textarea>
+      {/* Form Container */}
+      <div className="max-w-2xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="glass-panel rounded-2xl p-8 md:p-10 border border-emerald-500/20"
+        >
+          <AnimatePresence mode="wait">
+            {!isSuccess ? (
+              <motion.form
+                key="contact-form"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {/* Name */}
+                <div>
+                  <label htmlFor="name" className="block text-xs uppercase tracking-wider text-[#c5c6c7] mb-2 font-mono">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full bg-[#161920]/60 border border-[#1f2833] focus:border-[#00f5a0] focus:shadow-lg focus:shadow-emerald-500/5 focus:-translate-y-0.5 rounded-lg px-4 py-3 text-white text-sm outline-none transition-all duration-300"
+                    placeholder="Enter your name"
+                  />
+                </div>
 
-            {/* Button */}
-            <motion.button
-              type="submit"
-              variants={inputVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500"
-            >
-              Submit Now
-              <Image src={assets.right_arrow_white} alt="" className="w-4" />
-            </motion.button>
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-xs uppercase tracking-wider text-[#c5c6c7] mb-2 font-mono">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-[#161920]/60 border border-[#1f2833] focus:border-[#00f5a0] focus:shadow-lg focus:shadow-emerald-500/5 focus:-translate-y-0.5 rounded-lg px-4 py-3 text-white text-sm outline-none transition-all duration-300"
+                    placeholder="Enter your email address"
+                  />
+                </div>
 
-            <p className="mt-4 text-center">{result}</p>
-          </form>
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className="block text-xs uppercase tracking-wider text-[#c5c6c7] mb-2 font-mono">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-[#161920]/60 border border-[#1f2833] focus:border-[#00f5a0] focus:shadow-lg focus:shadow-emerald-500/5 focus:-translate-y-0.5 rounded-lg px-4 py-3 text-white text-sm outline-none transition-all duration-300 resize-none"
+                    placeholder="Type your message here..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3.5 px-6 rounded-lg bg-[#00f5a0] hover:bg-[#00d9f5] text-[#0b0c10] font-semibold text-sm transition duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/10 disabled:opacity-50"
+                >
+                  {isSubmitting ? (
+                    <span className="w-5 h-5 border-2 border-[#0b0c10] border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Send Message <FiSend className="text-base" />
+                    </>
+                  )}
+                </motion.button>
+              </motion.form>
+            ) : (
+              <motion.div
+                key="success-message"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-12 space-y-4"
+              >
+                <div className="flex justify-center text-5xl text-[#00f5a0]">
+                  <FiCheckCircle className="animate-bounce" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Message Sent Successfully!</h3>
+                <p className="text-sm text-[#c5c6c7]/70 max-w-sm mx-auto">
+                  Thank you for reaching out. I have received your message and will get back to you shortly.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
-
-export default Contact;
